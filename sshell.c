@@ -117,7 +117,7 @@ int main(void) {
                 if (nl)
                         *nl = '\0';
 
-                if(strchr(cmdline, '<')){
+                /*if(strchr(cmdline, '<')){
 
                   char *commands = strtok(cmdline, "<");
 
@@ -168,14 +168,14 @@ int main(void) {
                   }
                   else if (pid > 0) {
                           int status;
-                          /*if(isInProgress){
+                          if(isInProgress){
                             int stat;
                             waitpid(inprogress, &stat, 0);
                             if (WIFEXITED(stat)) {
                                 int exit_status = WEXITSTATUS(stat);
                                 fprintf(stderr, "+ completed '%s' [%d]\n", cmd.cmdlinestr, exit_status);
                             }
-                          }*/
+                          }
                           waitpid(pid, &status, 0);
                           if (WIFEXITED(status)) {
                               int exit_status = WEXITSTATUS(status);
@@ -187,7 +187,7 @@ int main(void) {
                           perror("fork");
                           exit(EXIT_FAILURE);
                   }
-                }
+                }*/
 
                 if(strchr(cmdline, '|')){
                     char *holder = strtok(cmdline, "|");
@@ -232,7 +232,7 @@ int main(void) {
 
                     }*/
 
-                    pid2 = fork();
+                    pid2 = pid3 = pid4 = fork();
                     if(pid2 == 0){
                         close(fd[1]);
                         dup2(fd[0], STDIN_FILENO);
